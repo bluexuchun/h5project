@@ -11,19 +11,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/rot-animate.css">
   <link rel="stylesheet" href="css/swiper.min.css">
-  <script scr="js/main.js"></script>
   <style>
-    .vert {
-      width: 100%;
-      height: 100%;
-    }
-    .hor{
-      width:100%;
-      height:100%;
-      position: absolute;
-      left:100%;
-      top:0px;
-    }
     .swiper-slide {
       text-align: center;
       font-size: 18px;
@@ -45,8 +33,120 @@
   </style>
   <body>
     <div class="main">
+      <!-- 首页 -->
+      <div class="main-index">
+        <div class="index-img">
+          <img class="iimg" src="img/header.png" alt="">
+        </div>
+        <!-- 内容 -->
+        <div class="index-content">
+          <div class="content">
+            <div class="content-title">
+              <div class="content-dtitle">
+                目录
+              </div>
+            </div>
+            <div class="ml">
+              <div class="ml-bottom">
+                <div class="ml-cir"></div>
+                <div class="ml-line">
+                </div>
+              </div>
+              <div class="ml-title">
+                2018年，香奈儿继续踏上探索肌肤健康净澈光采的旅程
+              </div>
+              <ul class="ml-list">
+                <li class="list-item" style="margin-bottom:0px;" data-id="0" is-finish="0">
+                  <div class="list-item-head">
+                    <div class="list-item-log">
+                      <img src="img/knowledge.png" alt="" class="list-item-img">
+                      <img src="img/knowledge-active.png" alt="" class="list-item-acimg">
+                    </div>
+                    <div class="list-item-title">珍贵白梅——健康净澈光采的秘密</div>
+                  </div>
+                  <div class="list-item-more">
+                    <img src="img/more.jpg" alt="" class="list-item-arrow">
+                  </div>
+                </li>
+                <li class="cir">
+                  <div class="cir-line">
+                    <div class="ml-cir1"></div>
+                  </div>
+                  <div class="ml-desc">如何打造自带光采的肌肤？</div>
+                </li>
+                <li class="list-item" data-id="1" is-finish="0">
+                  <div class="list-item-head">
+                    <div class="list-item-log">
+                      <img src="img/knowledge.png" alt="" class="list-item-img">
+                      <img src="img/knowledge-active.png" alt="" class="list-item-acimg">
+                    </div>
+                    <div class="list-item-title">核心产品，只选对的</div>
+                  </div>
+                  <div class="list-item-more">
+                    <img src="img/more.jpg" alt="" class="list-item-arrow">
+                  </div>
+                </li>
+                <li class="list-item" data-id="2" is-finish="0">
+                  <div class="list-item-head">
+                    <div class="list-item-log">
+                      <img src="img/knowledge.png" alt="" class="list-item-img">
+                      <img src="img/knowledge-active.png" alt="" class="list-item-acimg">
+                    </div>
+                    <div class="list-item-title">恰当的夜间保养，让你光采焕发</div>
+                  </div>
+                  <div class="list-item-more">
+                    <img src="img/more.jpg" alt="" class="list-item-arrow">
+                  </div>
+                </li>
+                <li class="list-item" data-id="3" is-finish="0">
+                  <div class="list-item-head">
+                    <div class="list-item-log">
+                      <img src="img/knowledge.png" alt="" class="list-item-img">
+                      <img src="img/knowledge-active.png" alt="" class="list-item-acimg">
+                    </div>
+                    <div class="list-item-title">用彩妆和上妆技巧提升元气</div>
+                  </div>
+                  <div class="list-item-more">
+                    <img src="img/more.jpg" alt="" class="list-item-arrow">
+                  </div>
+                </li>
+                <li class="list-item" data-id="4" is-finish="0">
+                  <div class="list-item-head">
+                    <div class="list-item-log">
+                      <img src="img/knowledge.png" alt="" class="list-item-img">
+                      <img src="img/knowledge-active.png" alt="" class="list-item-acimg">
+                    </div>
+                    <div class="list-item-title">KEEP IN MIND</div>
+                  </div>
+                  <div class="list-item-more">
+                    <img src="img/more.jpg" alt="" class="list-item-arrow">
+                  </div>
+                </li>
+                <li class="list-item" data-id="5" is-finish="0">
+                  <div class="list-item-head">
+                    <div class="list-item-log">
+                      <img src="img/knowledge.png" alt="" class="list-item-img">
+                      <img src="img/knowledge-active.png" alt="" class="list-item-acimg">
+                    </div>
+                    <div class="list-item-title">随堂小测试</div>
+                  </div>
+                  <div class="list-item-more">
+                    <img src="img/more.jpg" alt="" class="list-item-arrow">
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="index-jd">
+          <div class="empty-line">
+            <div class="jd-line"></div>
+          </div>
+          <div class="process">0%</div>
+        </div>
+      </div>
       <!-- 纵向 -->
-      <div class="vert">
+      <!-- <div class="vert">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="q-main">
@@ -74,50 +174,63 @@
             <button onclick="toggle()">点击隐藏</button>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- 横向 -->
-      <div class="hor">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">Slide 1</div>
-          <div class="swiper-slide">Slide 2</div>
-          <div class="swiper-slide">Slide 3</div>
+      <div class="detail">
+        <div class="detail-header">
+          <div class="head-content">
+            <img class="d-back" src="img/back.png" alt="">
+            <div class="head-title"></div>
+          </div>
+        </div>
+        <div class="detail-content">
+          <div class="hor">
+            <div class="swiper-wrapper">
+
+            </div>
+          </div>
+        </div>
+        <div class="detail-footer">
+          <div class="left-icon">
+            <img class="de-prev" src="img/left.png" alt="">
+          </div>
+          <div class="detail-process">
+            <div class="de-emline">
+              <div class="deline"></div>
+            </div>
+            <div class="de-word"></div>
+          </div>
+          <div class="right-icon">
+            <img class="de-next" src="img/right.png" alt="">
+            <img class="de-quit" src="img/quit.png" alt="">
+          </div>
         </div>
       </div>
 
+      <!-- finish -->
+      <div class="finish">
+        <div class="finish-content">
+          <div class="finish-word">
+            <div class="fsuccess">
+              <img src="img/success.png" alt="">
+            </div>
+            <div class="fword">
+              <p>恭喜你！</p>
+              <p>完成了这个章节的学习！</p>
+            </div>
+            <div class="fword-p">
+              请学习下个章节吧！
+            </div>
+          </div>
+        </div>
+        <div class="finish-btn">
+          <button class="continue">继续学习</button>
+        </div>
+      </div>
     </div>
     <script src="js/jquery.js"></script>
     <script src="js/swiper.min.js"></script>
-    <script type="text/javascript">
-      var swiper = new Swiper('.vert', {
-        direction: 'vertical',
-        pagination: {
-          clickable: true,
-        },
-      });
-      var swiper = new Swiper('.hor', {
-        direction: 'horizontal',
-        pagination: {
-          clickable: true,
-        },
-      });
-    </script>
-    <script type="text/javascript">
-      function change(){
-        $('.DrotZ').removeClass('rotz').removeClass('rotz-ori').addClass('rotz');
-        $('.DrotZ-back').removeClass('rotz-back').removeClass('rotz-back-ori').addClass('rotz-back');
-      }
-      function changeOrigin(){
-        $('.DrotZ').removeClass('rotz').removeClass('rotz-ori').addClass('rotz-ori');
-        $('.DrotZ-back').removeClass('rotz-back').removeClass('rotz-back-ori').addClass('rotz-back-ori');
-      }
-      function toggle(){
-        $('.vert').css({
-          'opacity':'0'
-        });
-        $('.hor').animate({
-          left:'0px'
-        })
-      }
-    </script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
