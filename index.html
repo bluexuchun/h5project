@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/rot-animate.css">
   <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="css/media.css">
   <style>
     .swiper-slide {
       text-align: center;
@@ -40,11 +41,11 @@
         </div>
         <!-- 内容 -->
         <div class="index-content">
-          <div class="content">
+          <div class="arrow">
+            <img class="slarrow" src="img/sliper-arrow.png" alt="">
+          </div>
+          <div class="content" id="cc">
             <div class="content-title">
-              <div class="content-dtitle">
-                目录
-              </div>
             </div>
             <div class="ml">
               <div class="ml-bottom">
@@ -145,36 +146,39 @@
           <div class="process">0%</div>
         </div>
       </div>
-      <!-- 纵向 -->
-      <!-- <div class="vert">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="q-main">
-              <div class="header">
-                这是头部
-              </div>
-              <div class="content">
-                <div class="content-rotZ">
-                  <div class="DrotZ">
-                    <button onclick="change()">点击翻转</button>
-                  </div>
-                  <div class="DrotZ-back">
-                    <button onclick="changeOrigin()">点击返回</button>
-                  </div>
-                </div>
-              </div>
-              <div class="footer">
-                这是尾部
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">Slide 2</div>
-          <div class="swiper-slide">Slide 3</div>
-          <div class="swiper-slide">
-            <button onclick="toggle()">点击隐藏</button>
+
+      <!-- 嵌套 -->
+      <div class="redetail">
+        <div class="redetail-header">
+          <div class="rehead-content">
+            <img class="red-back" src="img/back.png" alt="">
+            <div class="head-title"></div>
           </div>
         </div>
-      </div> -->
+        <div class="redetail-content">
+          <div class="ver-tic">
+            <div class="swiper-wrapper">
+
+            </div>
+          </div>
+        </div>
+        <div class="redetail-footer">
+          <div class="left-icon">
+            <img class="rede-prev" src="img/left.png" alt="">
+          </div>
+          <div class="redetail-process">
+            <div class="rede-emline">
+              <div class="redeline"></div>
+            </div>
+            <div class="rede-word"></div>
+          </div>
+          <div class="right-icon">
+            <img class="rede-next" src="img/right.png" alt="">
+            <img class="rede-quit" src="img/quit.png" alt="">
+          </div>
+        </div>
+      </div>
+
       <!-- 横向 -->
       <div class="detail">
         <div class="detail-header">
@@ -204,6 +208,28 @@
             <img class="de-next" src="img/right.png" alt="">
             <img class="de-quit" src="img/quit.png" alt="">
           </div>
+        </div>
+      </div>
+
+      <div class="qfinish">
+        <div class="qfinish-content">
+          <div class="qfinish-word">
+            <div class="qfsuccess">
+              <img class="qi-s" src="img/success.png" alt="">
+              <img class="qi-f" src="img/error.png" alt="">
+            </div>
+            <div class="qfword">
+              <p class="q-s">恭喜你，全部答对。</p>
+              <div class="q-f">
+                <p>很抱歉你没有全部答对，</p>
+                <p>可以重新回顾测试，加深记忆。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="qfinish-btn">
+          <button class="qs-contiune">完成答题</button>
+          <button class="q-contiune">继续答题</button>
         </div>
       </div>
 

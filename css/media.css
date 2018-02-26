@@ -1,0 +1,20 @@
+@media screen and (min-width:415px) and (max-width:800px){
+    html {
+        font-size: 11pt;
+    }
+}
+@media screen and (min-width:360px) and (max-width: 415px) {
+    html {
+        font-size: 10pt;
+    }
+}
+@media screen and (min-width:321px) and (max-width:360px){
+    html {
+        font-size: 9pt;
+    }
+}
+@media screen and (max-width:320px){
+    html {
+        font-size: 8pt;
+    }
+}
