@@ -24,9 +24,10 @@ var ver = new Swiper('.ver-tic', {
   on: {
     slideChange: function () {
       // 设置总数
-      var all = ver.slides.length - 1;
+      var all = ver.slides.length - 2;
       var index = this.activeIndex;
       var length = index / all * 100;
+      console.log(index);
       if(index == 0){
         $('.redetail .redetail-footer').css({
           'display':'none'
@@ -40,17 +41,44 @@ var ver = new Swiper('.ver-tic', {
           $('.rede-quit').show();
           $('.DrotZ-next').hide();
           $('.DrotZ-finish').show();
+          $('.redeline').animate({
+            'width':length+'%'
+          },'fast');
+          $('.rede-word').html(index+'/'+all);
+        }else if(index > all){
+          var key = true;
+          for(var i=0;i<ver.slides.length - 1;i++){
+            console.log($('.ques').eq(i).attr('data-opt'));
+            if($('.ques').eq(i).attr('data-opt') == 'error'){
+              key = false;
+              $('.qi-f').show();
+              $('.qi-s').hide();
+              $('.q-s').hide();
+              $('.q-f').show();
+              $('.q-contiune').css({'display':'block'});
+              $('.qs-contiune').hide();
+            }
+          }
+          if(key){
+            $('.qi-f').hide();
+            $('.qi-s').show();
+            $('.q-s').show();
+            $('.q-f').hide();
+            $('.q-contiune').css({'display':'none'});
+            $('.qs-contiune').show();
+          }
         }else{
           $('.rede-next').show();
           $('.rede-quit').hide();
           $('.DrotZ-next').show();
           $('.DrotZ-finish').hide();
+          $('.redeline').animate({
+            'width':length+'%'
+          },'fast');
+          $('.rede-word').html(index+'/'+all);
         }
       }
-      $('.redeline').animate({
-        'width':length+'%'
-      },'fast');
-      $('.rede-word').html(index+'/'+all);
+
     },
   },
 });
@@ -65,29 +93,16 @@ $('.rede-next').click(function(){
   ver.slideNext();
 });
 
-$('.qs-contiune').on('click',function(){
+
+$('.rede-quit').on('click',function(){
   $('.redetail').css({
     'opacity':'0'
-  });
-  $('.qfinish').css({
-    'opacity':'0',
-    'left':'100%'
   });
   ver.slideTo(0, 100, false);
   $('.finish').animate({
     'left':'0%'
   },'fast');
 });
-
-// $('.rede-quit').on('click',function(){
-//   $('.redetail').css({
-//     'opacity':'0'
-//   });
-//   ver.slideTo(0, 100, false);
-//   $('.finish').animate({
-//     'left':'0%'
-//   },'fast');
-// });
 
 var hor = new Swiper('.hor', {
   direction: 'horizontal',
@@ -150,7 +165,8 @@ $('.de-quit').on('click',function(){
 });
 
 $('.continue').on('click',function(){
-  console.log('continue');
+  $(document).attr('title','遇见最澄澈透白的你');
+  $('.main-black').hide();
   var item = $(this).attr('data-item');
   var length = $('.list-item').length;
   var num = 0;
@@ -184,10 +200,13 @@ $('.continue').on('click',function(){
     'left':'100%'
   },'fast');
 });
+
 // 点击进入
 $('.list-item').on('click',function(){
   $('.main-black').show();
   var id = $(this).attr('data-id');
+  var title = $(this).find('.list-item-title').text();
+  $(document).attr('title',title);
   if(id != 0){
     if(id == 5) {
       location.href = 'http://wechanel.eweixin.biz/Common/CourseExam_2017.aspx?CourseID=70';
@@ -254,11 +273,7 @@ function redirectTo(obj){
   location.href = url;
 }
 function finish(){
-  $('.main-black').hide();
-  $('.redetail').css({
-    'opacity':'1'
-  });
-  ver.slideTo(0, 100, false);
+  ver.slideTo(6, 100, false);
   var key = true;
   for(var i=0;i<ver.slides.length - 1;i++){
     console.log($('.ques').eq(i).attr('data-opt'));
@@ -270,9 +285,6 @@ function finish(){
       $('.q-f').show();
       $('.q-contiune').css({'display':'block'});
       $('.qs-contiune').hide();
-      $('.qfinish').animate({
-        'left':'0%'
-      },'fast');
     }
   }
   if(key){
@@ -282,13 +294,10 @@ function finish(){
     $('.q-f').hide();
     $('.q-contiune').css({'display':'none'});
     $('.qs-contiune').show();
-    $('.qfinish').animate({
-      'left':'0%'
-    },'fast');
   }
 }
 // 继续答题
-$('.q-contiune').click(function(){
+function qContinue(){
   $('.DrotZ').removeClass('rotz').removeClass('rotz-ori');
   $('.DrotZ-back').removeClass('rotz-back').removeClass('rotz-back-ori');
   $('.qfinish').animate({
@@ -301,7 +310,23 @@ $('.q-contiune').click(function(){
   $('.q-contiune').css({'display':'none'});
   $('.qs-contiune').show();
   ver.slideTo(1,100,false);
-})
+}
+// 完成答题
+function fContiune(){
+  $('.redetail').css({
+    'opacity':'0'
+  });
+  $('.qfinish').css({
+    'opacity':'0',
+    'left':'100%'
+  });
+  ver.slideTo(0, 100, false);
+  $('.finish').animate({
+    'left':'0%'
+  },'fast');
+}
+
+// 获取内容元素
 function chooseItem(id){
   var item = null;
   switch(id){
@@ -674,7 +699,32 @@ function makeHtml(array){
         '</div>'+
       '</div>';
     }
+    html += '<div class="swiper-slide">'+
+    '<div class="qfinish">'+
+      '<div class="qfinish-content">'+
+        '<div class="qfinish-word">'+
+          '<div class="qfsuccess">'+
+            '<img class="qi-s" src="img/success.png" alt="">'+
+            '<img class="qi-f" src="img/error.png" alt="">'+
+          '</div>'+
+          '<div class="qfword">'+
+            '<p class="q-s">恭喜你，全部答对。</p>'+
+            '<div class="q-f">'+
+              '<p>很抱歉你没有全部答对，</p>'+
+              '<p>可以重新回顾测试，加深记忆。</p>'+
+            '</div>'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="qfinish-btn">'+
+        '<button class="qs-contiune" onclick="fContiune()">完成答题</button>'+
+        '<button class="q-contiune" onclick="qContinue()">继续答题</button>'+
+      '</div>'+
+    '</div>'+
+    '</div>';
   }
+
+
 
 
   return html;
