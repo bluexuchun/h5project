@@ -13,6 +13,14 @@
         font-size: 9pt;
     }
 }
+@media screen and (max-width:376px){
+  .DrotZ-content .DrotZ-que{
+    margin-top:1.5rem;
+  }
+  .DrotZ .DrotZ-content, .DrotZ-back .DrotZ-content{
+    padding:10px 30px;
+  }
+}
 @media screen and (max-width:320px){
     html {
         font-size: 8pt;

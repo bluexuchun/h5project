@@ -79,15 +79,16 @@ $('.qs-contiune').on('click',function(){
   },'fast');
 });
 
-$('.rede-quit').on('click',function(){
-  $('.redetail').css({
-    'opacity':'0'
-  });
-  ver.slideTo(0, 100, false);
-  $('.finish').animate({
-    'left':'0%'
-  },'fast');
-});
+// $('.rede-quit').on('click',function(){
+//   $('.redetail').css({
+//     'opacity':'0'
+//   });
+//   ver.slideTo(0, 100, false);
+//   $('.finish').animate({
+//     'left':'0%'
+//   },'fast');
+// });
+
 var hor = new Swiper('.hor', {
   direction: 'horizontal',
   pagination: {
@@ -125,12 +126,14 @@ $('.de-next').click(function(){
   hor.slideNext();
 })
 $('.d-back').on('click',function(){
+  $('.main-black').hide();
   hor.slideTo(0, 100, false);
   $('.detail').animate({
     'left':'100%'
   });
 });
 $('.red-back').on('click',function(){
+  $('.main-black').hide();
   ver.slideTo(0, 100, false);
   $('.redetail').animate({
     'left':'100%'
@@ -145,7 +148,9 @@ $('.de-quit').on('click',function(){
     'left':'0%'
   },'fast');
 });
+
 $('.continue').on('click',function(){
+  console.log('continue');
   var item = $(this).attr('data-item');
   var length = $('.list-item').length;
   var num = 0;
@@ -166,7 +171,7 @@ $('.continue').on('click',function(){
     },'fast');
     $('.process').html(fnum + '%');
   }
-
+  $('.main-black').hide();
   $('.detail').css({
     'opacity':'1',
     'left':'100%'
@@ -181,10 +186,15 @@ $('.continue').on('click',function(){
 });
 // 点击进入
 $('.list-item').on('click',function(){
+  $('.main-black').show();
   var id = $(this).attr('data-id');
   if(id != 0){
     if(id == 5) {
       location.href = 'http://wechanel.eweixin.biz/Common/CourseExam_2017.aspx?CourseID=70';
+      $('.list-item').eq(5).attr('is-finish',1);
+      $('.list-item').eq(5).find('.list-item-img').hide();
+      $('.list-item').eq(5).find('.list-item-acimg').addClass('acimg');
+      $.cookie(5, 1, { expires: 7 });
     }else{
       $('.continue').attr('data-item',id);
       var item = chooseItem(id);
@@ -205,8 +215,6 @@ $('.list-item').on('click',function(){
       'left':'0px'
     },'fast');
   }
-
-
 });
 
 // 翻卡片
@@ -243,9 +251,10 @@ function toNext(){
 // 路由跳转
 function redirectTo(obj){
   var url = $(obj).attr('data-url');
-  loaction.href = url;
+  location.href = url;
 }
 function finish(){
+  $('.main-black').hide();
   $('.redetail').css({
     'opacity':'1'
   });
@@ -304,7 +313,7 @@ function chooseItem(id){
           'questionList':[
             {
               'id':1,
-              'question':'白梅花的花期是什么时候',
+              'question':'白梅花的花期是什么时候？',
               'options':[
                 {
                   'A':'2-3月',
@@ -318,18 +327,60 @@ function chooseItem(id){
             },
             {
               'id':2,
-              'question':'白梅花的象征是什么',
+              'question':'白梅花的象征是什么？',
               'options':[
                 {
-                  'A':'健康和生命力',
-                  'B':'和平与纯洁',
+                  'A':'和平与纯洁',
+                  'B':'健康和生命力',
                   'C':'幸福和甜美'
                 }
               ],
-              'right':'A',
+              'right':'B',
               'rightQue':'健康和生命力',
               'mark':'白梅花是健康和生命力的象征，1000年的白梅花仍在开花。'
-            }
+            },
+            {
+              'id':3,
+              'question':'白梅精粹的功效有哪些？',
+              'options':[
+                {
+                  'A':'修复细胞，提升肌肤活力，让肌肤重焕光彩',
+                  'B':'净化肌肤',
+                  'C':'舒缓、柔软肌肤'
+                }
+              ],
+              'right':'A',
+              'rightQue':'修复细胞，提升肌肤活力，让肌肤重焕光彩',
+              'mark':'香奈儿研发中心历时4年，提炼出白梅精粹，它能提升肌肤活力，代谢和修复受损的细胞。'
+            },
+            {
+              'id':4,
+              'question':'白梅花采摘的时间？',
+              'options':[
+                {
+                  'A':'清晨',
+                  'B':'午后',
+                  'C':'傍晚'
+                }
+              ],
+              'right':'A',
+              'rightQue':'清晨',
+              'mark':'香奈儿只选取短暂盛放期的白梅花，于清晨全手工摘取，经过3周12道工序的专业萃取，完整保存其独特功效。'
+            },
+            {
+              'id':5,
+              'question':'香奈儿使用的珍贵白梅产自哪里？',
+              'options':[
+                {
+                  'A':'格拉斯',
+                  'B':'热带地区',
+                  'C':'日本宇和岛'
+                }
+              ],
+              'right':'C',
+              'rightQue':'日本宇和岛',
+              'mark':'香奈儿只选取最佳品种————日本德岛县的南高梅。那里有香奈儿专属种植区。'
+            },
           ]
         }
       ];
@@ -342,22 +393,22 @@ function chooseItem(id){
           'imgsList':[
             {
               'id':'1',
-              'img':'hx1',
+              'img':'hx1.jpg',
               'long':'fix'
             },
             {
               'id':'2',
-              'img':'hx2',
+              'img':'hx2.jpg',
               'long':'long'
             },
             {
               'id':'3',
-              'img':'hx3',
+              'img':'hx3.jpg',
               'long':'fix'
             },
             {
               'id':'4',
-              'img':'hx4',
+              'img':'hx4.jpg',
               'long':'fix'
             }
 
@@ -373,33 +424,33 @@ function chooseItem(id){
           'imgsList':[
             {
               'id':'1',
-              'img':'qd1',
+              'img':'qd1.jpg',
               'long':'long',
               'type':'img'
             },
             {
               'id':'2',
-              'img':'qd2',
+              'img':'qd2.jpg',
               'long':'fix',
               'type':'img'
             },
             {
               'id':'3',
-              'img':'qd3',
+              'img':'qd3.jpg',
               'long':'long',
               'type':'video',
               'link':'http://wechanel.eweixin.biz/mkptest/video_play.html?URL=http://chanelqy.oss-cn-hangzhou.aliyuncs.com/2018/kejian/0213/xiaoxiannvFiona.mp4'
             },
             {
               'id':'4',
-              'img':'qd4',
+              'img':'qd4.jpg',
               'long':'fix',
               'type':'video',
               'link':'http://wechanel.eweixin.biz/mkptest/video_play.html?URL=http://chanelqy.oss-cn-hangzhou.aliyuncs.com/2018/kejian/0213/guangcai.mp4'
             },
             {
               'id':'5',
-              'img':'qd5',
+              'img':'qd5.jpg',
               'long':'fix',
               'type':'img'
             }
@@ -415,42 +466,42 @@ function chooseItem(id){
           'imgsList':[
             {
               'id':'1',
-              'img':'cz1',
+              'img':'cz1.jpg',
               'long':'long'
             },
             {
               'id':'2',
-              'img':'cz2',
+              'img':'cz2.jpg',
               'long':'fix'
             },
             {
               'id':'3',
-              'img':'cz3',
+              'img':'cz3.jpg',
               'long':'long'
             },
             {
               'id':'4',
-              'img':'cz4',
+              'img':'cz4.jpg',
               'long':'long'
             },
             {
               'id':'5',
-              'img':'cz5',
+              'img':'cz5.jpg',
               'long':'fix'
             },
             {
               'id':'6',
-              'img':'cz6',
+              'img':'cz6.jpg',
               'long':'long'
             },
             {
               'id':'7',
-              'img':'cz7',
+              'img':'cz7.jpg',
               'long':'long'
             },
             {
               'id':'8',
-              'img':'cz8',
+              'img':'cz8.jpg',
               'long':'fix'
             }
           ]
@@ -465,7 +516,7 @@ function chooseItem(id){
           'imgsList':[
             {
               'id':'1',
-              'img':'kp1',
+              'img':'kp1.png',
               'long':'long',
               'type':'button',
               'link':'http://wechanel.eweixin.biz/Common/CourseExam_2017.aspx?CourseID=70'
@@ -500,13 +551,13 @@ function makeHtml(array){
       if(ilist[i]['long'] == 'fix'){
         html+='<div class="swiper-slide">'+
           '<div class="global">'+
-            '<img src="img/hx/'+ilist[i]['img']+'.jpg" />'+
+            '<img src="img/hx/'+ilist[i]['img']+'" />'+
           '</div>'+
         '</div>';
       }else{
         html+='<div class="swiper-slide">'+
           '<div class="global-long">'+
-            '<img src="img/hx/'+ilist[i]['img']+'.jpg" />'+
+            '<img src="img/hx/'+ilist[i]['img']+'" />'+
             '<div class="long-arrow">'+
               '<img class="slarrow" src="img/sliper-arrow.png" alt="">'+
             '</div>'+
@@ -529,7 +580,7 @@ function makeHtml(array){
       if(vlist[i]['long'] == 'fix'){
         html+='<div class="swiper-slide">'+
           '<div class="global">'+
-            '<img src="img/hx/'+vlist[i]['img']+'.jpg" />';
+            '<img src="img/hx/'+vlist[i]['img']+'" />';
         if(vlist[i]['type'] == 'video'){
           html+='<div class="glink" onclick="redirectTo(this)" data-url="'+vlist[i]['link']+'"></div>';
         }
@@ -538,7 +589,7 @@ function makeHtml(array){
       }else{
         html+='<div class="swiper-slide">'+
           '<div class="global-long">'+
-            '<img src="img/hx/'+vlist[i]['img']+'.jpg" />';
+            '<img src="img/hx/'+vlist[i]['img']+'" />';
             if(vlist[i]['type'] == 'video'){
               html+='<div class="glink" onclick="redirectTo(this)" data-url="'+vlist[i]['link']+'"></div>';
             }else if(vlist[i]['type'] == 'button'){
