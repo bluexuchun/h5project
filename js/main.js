@@ -24,7 +24,7 @@ var ver = new Swiper('.ver-tic', {
   on: {
     slideChange: function () {
       // 设置总数
-      var all = ver.slides.length - 2;
+      var all = ver.slides.length - 3;
       var index = this.activeIndex;
       var length = index / all * 100;
       console.log(index);
@@ -34,7 +34,7 @@ var ver = new Swiper('.ver-tic', {
         })
       }else{
         $('.redetail .redetail-footer').css({
-          'display':'flex'
+          'display':'none'
         })
         if(index == all){
           $('.rede-next').hide();
@@ -404,7 +404,7 @@ function chooseItem(id){
               ],
               'right':'C',
               'rightQue':'日本宇和岛',
-              'mark':'香奈儿只选取最佳品种————日本德岛县的南高梅。那里有香奈儿专属种植区。'
+              'mark':'香奈儿只选取最佳品种——日本德岛县的南高梅。那里有香奈儿专属种植区。'
             },
           ]
         }
@@ -541,7 +541,7 @@ function chooseItem(id){
           'imgsList':[
             {
               'id':'1',
-              'img':'kp1.png',
+              'img':'kp1.jpg',
               'long':'long',
               'type':'button',
               'link':'http://wechanel.eweixin.biz/Common/CourseExam_2017.aspx?CourseID=70'
@@ -635,7 +635,7 @@ function makeHtml(array){
       'width':1/length * 100 +'%'
     });
     $('.de-word').html(1+'/'+length);
-    html += '<div class="swiper-slide special-slide">'+
+    html += '<div class="swiper-slide special-slide swiper-no-swiping">'+
       '<div class="reindex">'+
         '<div class="reindex-content">'+
           '<div class="reindex-title">'+
@@ -658,7 +658,7 @@ function makeHtml(array){
     '</div>';
 
     for(var i = 0;i<length;i++){
-      html += '<div class="swiper-slide ques" data-opt="error" user-opt="empty">'+
+      html += '<div class="swiper-slide ques swiper-no-swiping" data-opt="error" user-opt="empty">'+
         '<div class="q-main">'+
           '<div class="content">'+
             '<div class="content-rotZ">'+
@@ -699,7 +699,8 @@ function makeHtml(array){
         '</div>'+
       '</div>';
     }
-    html += '<div class="swiper-slide">'+
+
+    html += '<div class="swiper-slide swiper-no-swiping">'+
     '<div class="qfinish">'+
       '<div class="qfinish-content">'+
         '<div class="qfinish-word">'+
@@ -717,15 +718,21 @@ function makeHtml(array){
         '</div>'+
       '</div>'+
       '<div class="qfinish-btn">'+
-        '<button class="qs-contiune" onclick="fContiune()">完成答题</button>'+
-        '<button class="q-contiune" onclick="qContinue()">继续答题</button>'+
+        '<button class="qs-contiune" onclick="toNext()">完成答题</button>'+
+        '<div class="qother">'+
+          '<button class="q-contiune" onclick="qContinue()">重新测试</button>'+
+          '<button class="q-contiune" onclick="toNext()">继续学习</button>'+
+        '</div>'+
       '</div>'+
     '</div>'+
     '</div>';
+
+    html += '<div class="swiper-slide special-slide swiper-no-swiping">'+
+      '<div class="recindex">'+
+        '<img src="img/new.jpg">'+
+        '<button class="contiunebtn" onclick="fContiune()">完成学习</button>'+
+      '</div>'+
+    '</div>';
   }
-
-
-
-
   return html;
 }
